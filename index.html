@@ -5,43 +5,88 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Bot Builder</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background-color: #111;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 50px 20px;
+      padding: 20px;
+      animation: fadeIn 2s ease-in-out;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     h1 {
-      font-size: 2.8rem;
+      font-size: 3rem;
+      font-weight: 700;
       margin-bottom: 1rem;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
+
     p {
       font-size: 1.2rem;
       margin-bottom: 2rem;
+      color: #ccc;
+      max-width: 600px;
     }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     .buttons a {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 24px;
-      background-color: #4CAF50;
-      color: white;
+      padding: 14px 28px;
+      background-color: #00f2fe;
+      color: #000;
       text-decoration: none;
-      border-radius: 6px;
-      font-size: 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: 0.3s;
     }
+
     .buttons a:hover {
-      background-color: #45a049;
+      background-color: #4facfe;
+      transform: scale(1.05);
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.8rem;
+      color: #777;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to Your AI Bot Builder</h1>
-  <p>Connect your apps, schedule tasks, and message your personal AI assistant.</p>
+  <h1>AI Bot Builder</h1>
+  <p>Build, connect & command your own AI assistant. Connect apps. Automate workflows. All through one smart messenger.</p>
   <div class="buttons">
     <a href="/login.html">Login</a>
     <a href="/signup.html">Sign Up</a>
     <a href="/demo.html">Try Demo</a>
   </div>
+  <footer>
+    © 2025 AI Bot Builder. All rights reserved.
+  </footer>
 </body>
 </html>
