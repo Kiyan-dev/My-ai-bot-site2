@@ -2,91 +2,183 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Bot Builder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OpsByteAi</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #fff;
-      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0d0d0d;
+      color: white;
+    }
+    header {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
+      padding: 20px 50px;
+      background-color: #111;
+    }
+    header h1 {
+      color: #00ff88;
+      font-size: 1.8rem;
+    }
+    header nav a {
+      margin-left: 20px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .hero h2 {
+      font-size: 2.5rem;
+      color: #00ff88;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: auto;
+      color: #ccc;
+    }
+    .hero button {
+      margin-top: 20px;
+      padding: 12px 30px;
+      background-color: #00ff88;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .features, .pricing {
+      padding: 50px 20px;
+      text-align: center;
+    }
+    .features h3, .pricing h3 {
+      color: #00ff88;
+      margin-bottom: 20px;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .feature-card {
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+      position: relative;
+    }
+    .tooltip {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #333;
+      color: white;
+      padding: 5px;
+      border-radius: 5px;
+      font-size: 0.8rem;
+      display: none;
+    }
+    .feature-card:hover .tooltip {
+      display: block;
+    }
+    .pricing-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .price-card {
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+      width: 250px;
+    }
+    .price-card h4 {
+      color: #00ff88;
+      margin-bottom: 10px;
+    }
+    .price-card p {
+      color: #ccc;
+      margin: 5px 0;
+    }
+    footer {
       text-align: center;
       padding: 20px;
-      animation: fadeIn 2s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      background: linear-gradient(to right, #4facfe, #00f2fe);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      color: #ccc;
-      max-width: 600px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .buttons a {
-      padding: 14px 28px;
-      background-color: #00f2fe;
-      color: #000;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-
-    .buttons a:hover {
-      background-color: #4facfe;
-      transform: scale(1.05);
-    }
-
-    footer {
-      margin-top: 40px;
-      font-size: 0.8rem;
-      color: #777;
+      background-color: #111;
+      font-size: 0.9rem;
+      color: #666;
     }
   </style>
 </head>
 <body>
-  <h1>AI Bot Builder</h1>
-  <p>Build, connect & command your own AI assistant. Connect apps. Automate workflows. All through one smart messenger.</p>
-  <div class="buttons">
-    <a href="/login.html">Login</a>
-    <a href="/signup.html">Sign Up</a>
-    <a href="/demo.html">Try Demo</a>
-  </div>
+
+  <header>
+    <h1>OpsByteAi</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Features</a>
+      <a href="#">Pricing</a>
+      <a href="#">Login</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Next-Gen Automation & AI Assistant</h2>
+    <p>Connect your apps, schedule tasks, and let OpsByteAi handle everything — from posting videos to managing emails — all via chat.</p>
+    <button onclick="alert('Login feature coming soon!')">Get Started</button>
+  </section>
+
+  <section class="features">
+    <h3>Powerful Features</h3>
+    <div class="feature-grid">
+      <div class="feature-card">
+        Connect Any App
+        <div class="tooltip">Easily integrate your favorite tools.</div>
+      </div>
+      <div class="feature-card">
+        Smart Scheduling
+        <div class="tooltip">Automate tasks by minute, hour, or day.</div>
+      </div>
+      <div class="feature-card">
+        Multilingual Support
+        <div class="tooltip">Speaks the language of your phone.</div>
+      </div>
+      <div class="feature-card">
+        AI-Powered Ideas
+        <div class="tooltip">Bot generates its own creative solutions.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing">
+    <h3>Choose Your Plan</h3>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h4>Beginner - $8.99/mo</h4>
+        <p>8 connected apps</p>
+        <p>Basic automation</p>
+      </div>
+      <div class="price-card">
+        <h4>Advanced - $24.99/mo</h4>
+        <p>Unlimited apps</p>
+        <p>Advanced scheduling</p>
+      </div>
+      <div class="price-card">
+        <h4>Enterprise - Contact Us</h4>
+        <p>Custom integrations</p>
+        <p>Priority support</p>
+      </div>
+    </div>
+  </section>
+
   <footer>
-    © 2025 AI Bot Builder. All rights reserved.
+    © 2025 OpsByteAi — All Rights Reserved
   </footer>
+
 </body>
 </html>
