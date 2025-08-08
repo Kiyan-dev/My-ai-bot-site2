@@ -8,16 +8,15 @@
 </head>
 <body>
 
-  <!-- HEADER -->
   <header>
     <h1>OpsByteAi</h1>
     <nav>
       <a href="index.html">Home</a>
-      <a href="index.html#features">Features</a>
+      <a href="features.html">Features</a>
       <a href="pricing.html">Pricing</a>
-      <a href="login.html" id="loginLink">Login</a>
-      <a href="signup.html" id="signupLink">Sign Up</a>
-      <a href="#" id="logoutLink" style="display:none;">Logout</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="#" onclick="logout()">Logout</a>
     </nav>
     <div class="hamburger" onclick="toggleMenu()">
       <div></div>
@@ -26,98 +25,80 @@
     </div>
     <div class="mobile-menu" id="mobileMenu">
       <a href="index.html">Home</a>
-      <a href="index.html#features">Features</a>
+      <a href="features.html">Features</a>
       <a href="pricing.html">Pricing</a>
-      <a href="login.html" id="loginLinkMobile">Login</a>
-      <a href="signup.html" id="signupLinkMobile">Sign Up</a>
-      <a href="#" id="logoutLinkMobile" style="display:none;">Logout</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="#" onclick="logout()">Logout</a>
     </div>
   </header>
 
-  <!-- HERO -->
   <section class="hero fade-in">
     <h2>Next-Gen Automation & AI Assistant</h2>
     <p>Connect your apps, schedule tasks, and let OpsByteAi handle everything — from posting videos to managing emails — all via chat.</p>
     <button onclick="window.location.href='pricing.html'">Get Started</button>
-    <button onclick="window.location.href='signup.html'">Demo</button>
+    <button onclick="demoAccess()">Demo</button>
   </section>
 
-  <!-- FEATURES -->
-  <section class="features fade-in" id="features">
+  <section class="features fade-in">
     <h3>Powerful Features</h3>
     <div class="feature-grid">
       <div class="feature-card" onclick="toggleFeature(this)">
         Connect Any App
-        <div class="feature-text">Easily integrate your favorite tools.</div>
+        <div class="tooltip">Easily integrate your favorite tools.</div>
+        <p class="feature-text">Integrate apps like Gmail, Slack, YouTube, and more with just a click.</p>
       </div>
       <div class="feature-card" onclick="toggleFeature(this)">
         Smart Scheduling
-        <div class="feature-text">Automate tasks by minute, hour, or day.</div>
+        <div class="tooltip">Automate tasks by minute, hour, or day.</div>
+        <p class="feature-text">Plan social posts, send emails, or launch tasks exactly when you want.</p>
       </div>
       <div class="feature-card" onclick="toggleFeature(this)">
         Multilingual Support
-        <div class="feature-text">Speaks the language of your phone.</div>
+        <div class="tooltip">Speaks the language of your phone.</div>
+        <p class="feature-text">Supports over 50 languages for truly global automation.</p>
       </div>
       <div class="feature-card" onclick="toggleFeature(this)">
         AI-Powered Ideas
-        <div class="feature-text">Bot generates its own creative solutions.</div>
+        <div class="tooltip">Bot generates its own creative solutions.</div>
+        <p class="feature-text">Let the AI brainstorm, create, and automate without you lifting a finger.</p>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
-    <div class="footer-links">
-      <a href="#">About Us</a> |
-      <a href="#">FAQ</a> |
-      <a href="#">Contact</a>
-    </div>
+    <a href="about.html">About Us</a> |
+    <a href="faq.html">FAQ</a> |
+    <a href="contact.html">Contact</a>
     <p>© 2025 OpsByteAi — All Rights Reserved</p>
   </footer>
 
-  <!-- SCRIPTS -->
   <script>
-    // Toggle mobile menu
     function toggleMenu() {
       const menu = document.getElementById('mobileMenu');
       menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
     }
 
-    // Feature expand/collapse
-    function toggleFeature(el) {
-      el.classList.toggle('open');
+    function toggleFeature(card) {
+      const text = card.querySelector('.feature-text');
+      text.style.display = text.style.display === 'block' ? 'none' : 'block';
     }
 
-    // LOGIN/LOGOUT logic
-    const loggedIn = localStorage.getItem('loggedIn') === 'true';
-
-    const loginLink = document.getElementById('loginLink');
-    const signupLink = document.getElementById('signupLink');
-    const logoutLink = document.getElementById('logoutLink');
-
-    const loginLinkMobile = document.getElementById('loginLinkMobile');
-    const signupLinkMobile = document.getElementById('signupLinkMobile');
-    const logoutLinkMobile = document.getElementById('logoutLinkMobile');
-
-    if (loggedIn) {
-      loginLink.style.display = 'none';
-      signupLink.style.display = 'none';
-      logoutLink.style.display = 'inline';
-
-      loginLinkMobile.style.display = 'none';
-      signupLinkMobile.style.display = 'none';
-      logoutLinkMobile.style.display = 'block';
+    function demoAccess() {
+      if (localStorage.getItem("loggedIn") === "true") {
+        window.location.href = "demo.html";
+      } else {
+        alert("You need to sign up before accessing the demo.");
+        window.location.href = "signup.html";
+      }
     }
 
-    logoutLink.addEventListener('click', function () {
-      localStorage.removeItem('loggedIn');
-      window.location.href = 'index.html';
-    });
-
-    logoutLinkMobile.addEventListener('click', function () {
-      localStorage.removeItem('loggedIn');
-      window.location.href = 'index.html';
-    });
+    function logout() {
+      localStorage.removeItem("loggedIn");
+      alert("You have been logged out.");
+      window.location.href = "index.html";
+    }
   </script>
+
 </body>
 </html>
