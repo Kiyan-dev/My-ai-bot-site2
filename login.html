@@ -1,1 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - OpsByteAi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<header>
+  <h1>OpsByteAi</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="signup.html">Sign Up</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Login</h2>
+  <form onsubmit="loginUser(event)" style="max-width: 300px; margin:auto;">
+    <input type="text" id="username" placeholder="Username" required style="width:100%; padding:10px; margin:5px 0;">
+    <input type="password" id="password" placeholder="Password" required style="width:100%; padding:10px; margin:5px 0;">
+    <button type="submit" style="width:100%; padding:10px; background:#00ff88; border:none; font-weight:bold; cursor:pointer;">Login</button>
+  </form>
+</section>
+
+<script>
+function loginUser(e) {
+  e.preventDefault();
+  localStorage.setItem('loggedIn', 'true');
+  alert('Login successful!');
+  window.location.href = 'index.html';
+}
+</script>
+
+</body>
+</html>
