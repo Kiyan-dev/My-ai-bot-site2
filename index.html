@@ -115,11 +115,11 @@
     }
 
     /* Features */
-    .features, .pricing {
+    .features {
       padding: 40px 20px;
       text-align: center;
     }
-    .features h3, .pricing h3 {
+    .features h3 {
       color: #00ff88;
       margin-bottom: 20px;
     }
@@ -134,24 +134,55 @@
       background-color: #1a1a1a;
       padding: 20px;
       border-radius: 8px;
-      position: relative;
+      cursor: pointer;
+      transition: transform 0.2s ease;
     }
-    .tooltip {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background-color: #333;
-      color: white;
-      padding: 5px;
-      border-radius: 5px;
-      font-size: 0.8rem;
+    .feature-card:hover {
+      transform: translateY(-3px);
+      background-color: #222;
+    }
+
+    /* Modal */
+    .modal {
       display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
     }
-    .feature-card:hover .tooltip {
-      display: block;
+    .modal-content {
+      background-color: #1a1a1a;
+      margin: 15% auto;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      text-align: center;
+      color: white;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: white;
     }
 
     /* Pricing */
+    .pricing {
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .pricing h3 {
+      color: #00ff88;
+      margin-bottom: 20px;
+    }
     .pricing-grid {
       display: flex;
       flex-wrap: wrap;
@@ -195,8 +226,8 @@
     <h1>OpsByteAi</h1>
     <nav>
       <a href="#">Home</a>
-      <a href="#">Features</a>
-      <a href="#">Pricing</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
       <a href="#">Login</a>
     </nav>
     <div class="hamburger" onclick="toggleMenu()">
@@ -206,8 +237,8 @@
     </div>
     <div class="mobile-menu" id="mobileMenu">
       <a href="#">Home</a>
-      <a href="#">Features</a>
-      <a href="#">Pricing</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
       <a href="#">Login</a>
     </div>
   </header>
@@ -218,29 +249,25 @@
     <button onclick="alert('Login feature coming soon!')">Get Started</button>
   </section>
 
-  <section class="features fade-in">
+  <section id="features" class="features fade-in">
     <h3>Powerful Features</h3>
     <div class="feature-grid">
-      <div class="feature-card">
+      <div class="feature-card" onclick="openModal('Easily integrate your favorite tools with one click.')">
         Connect Any App
-        <div class="tooltip">Easily integrate your favorite tools.</div>
       </div>
-      <div class="feature-card">
+      <div class="feature-card" onclick="openModal('Automate tasks by minute, hour, or day, hands-free.')">
         Smart Scheduling
-        <div class="tooltip">Automate tasks by minute, hour, or day.</div>
       </div>
-      <div class="feature-card">
+      <div class="feature-card" onclick="openModal('OpsByteAi speaks your phone’s language, no setup needed.')">
         Multilingual Support
-        <div class="tooltip">Speaks the language of your phone.</div>
       </div>
-      <div class="feature-card">
+      <div class="feature-card" onclick="openModal('Bot generates its own creative ideas from your data.')">
         AI-Powered Ideas
-        <div class="tooltip">Bot generates its own creative solutions.</div>
       </div>
     </div>
   </section>
 
-  <section class="pricing fade-in">
+  <section id="pricing" class="pricing fade-in">
     <h3>Choose Your Plan</h3>
     <div class="pricing-grid">
       <div class="price-card">
@@ -265,10 +292,34 @@
     © 2025 OpsByteAi — All Rights Reserved
   </footer>
 
+  <!-- Modal -->
+  <div id="featureModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <p id="modalText"></p>
+    </div>
+  </div>
+
   <script>
     function toggleMenu() {
       const menu = document.getElementById('mobileMenu');
       menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function openModal(text) {
+      document.getElementById('modalText').innerText = text;
+      document.getElementById('featureModal').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('featureModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('featureModal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
     }
   </script>
 
