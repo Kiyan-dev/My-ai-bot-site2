@@ -1,1 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pricing - OpsByteAi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<header>
+  <h1>OpsByteAi</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="signup.html">Sign Up</a>
+    <a href="login.html">Login</a>
+    <a href="#">About Us</a>
+    <a href="#">FAQ</a>
+  </nav>
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div><div></div><div></div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="signup.html">Sign Up</a>
+    <a href="login.html">Login</a>
+    <a href="#">About Us</a>
+    <a href="#">FAQ</a>
+  </div>
+</header>
+
+<section class="hero">
+  <h2>Choose Your Plan</h2>
+  <p>Flexible pricing with discounts for longer commitments.</p>
+</section>
+
+<section class="features">
+  <div class="feature-card">
+    <h3>Starter — €8.99/month</h3>
+    <p>✅ 5 Apps<br>✅ Basic Automation<br>✅ Email Support</p>
+    <p>3 Months: €25.65 (-5%)<br>6 Months: €48.54 (-10%)<br>1 Year: €86.30 (-20%)</p>
+    <button onclick="buyPlan('Starter')">Buy Now</button>
+  </div>
+
+  <div class="feature-card">
+    <h3>Advanced — €15.99/month</h3>
+    <p>✅ 15 Apps<br>✅ Advanced Automation<br>✅ Priority Support</p>
+    <p>3 Months: €45.57 (-5%)<br>6 Months: €86.34 (-10%)<br>1 Year: €153.50 (-20%)</p>
+    <button onclick="buyPlan('Advanced')">Buy Now</button>
+  </div>
+
+  <div class="feature-card">
+    <h3>Pro — €29.99/month</h3>
+    <p>✅ Unlimited Apps<br>✅ AI Custom Features<br>✅ 24/7 Support</p>
+    <p>3 Months: €85.47 (-5%)<br>6 Months: €161.94 (-10%)<br>1 Year: €287.90 (-20%)</p>
+    <button onclick="buyPlan('Pro')">Buy Now</button>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 OpsByteAi — All Rights Reserved</p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+}
+
+function buyPlan(plan) {
+  const isLoggedIn = localStorage.getItem('loggedIn');
+  if (isLoggedIn === 'true') {
+    alert(`You have successfully purchased the ${plan} plan!`);
+  } else {
+    alert('Please log in before purchasing.');
+    window.location.href = 'login.html';
+  }
+}
+</script>
+
+</body>
+</html>
