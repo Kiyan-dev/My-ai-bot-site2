@@ -1,196 +1,287 @@
-<!DOCTYPE html>
+      <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OpsByteAI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OpsByteAi</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #0a0a0a;
+      background-color: #0d0d0d;
       color: white;
+      overflow-x: hidden;
     }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s forwards;
+    }
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Header */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
-      background-color: #000;
-      position: fixed;
-      width: 100%;
+      padding: 15px 30px;
+      background-color: #111;
+      position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 100;
     }
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #00ff99;
+    header h1 {
+      color: #00ff88;
+      font-size: 1.8rem;
+      margin: 0;
     }
+
+    /* Navigation */
     nav {
+      display: flex;
+      gap: 15px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Hamburger menu */
+    .hamburger {
       display: none;
       flex-direction: column;
-      background-color: #000;
+      cursor: pointer;
+    }
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background-color: #111;
       position: absolute;
       top: 60px;
       right: 0;
       width: 200px;
-      border-left: 1px solid #00ff99;
+      padding: 10px;
+      animation: slideDown 0.3s ease;
     }
-    nav a {
-      padding: 1rem;
-      text-decoration: none;
+    @keyframes slideDown {
+      from { transform: translateY(-10px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .mobile-menu a {
       color: white;
-      border-bottom: 1px solid #00ff99;
+      padding: 10px 0;
+      border-bottom: 1px solid #222;
+      text-decoration: none;
     }
-    nav a:hover {
-      background-color: #00ff99;
-      color: #000;
-    }
-    .hamburger {
-      font-size: 1.8rem;
-      cursor: pointer;
-    }
+
+    /* Hero */
     .hero {
       text-align: center;
-      padding: 8rem 1rem 3rem;
+      padding: 50px 20px;
     }
-    .hero h1 {
-      font-size: 2.5rem;
-      color: #00ff99;
+    .hero h2 {
+      font-size: 2rem;
+      color: #00ff88;
     }
     .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
+      font-size: 1rem;
+      max-width: 600px;
+      margin: auto;
+      color: #ccc;
     }
-    .buttons {
+    .hero .buttons {
+      margin-top: 20px;
       display: flex;
-      gap: 1rem;
+      gap: 15px;
       justify-content: center;
       flex-wrap: wrap;
     }
-    .btn {
-      padding: 0.8rem 1.5rem;
+    .hero button {
+      padding: 12px 30px;
+      background-color: #00ff88;
       border: none;
-      cursor: pointer;
-      font-size: 1rem;
-      background-color: #00ff99;
-      color: black;
       border-radius: 5px;
-      transition: background 0.3s;
+      font-size: 1rem;
+      cursor: pointer;
     }
-    .btn:hover {
-      background-color: #00cc77;
+
+    /* Features */
+    .features, .pricing {
+      padding: 40px 20px;
+      text-align: center;
     }
-    section {
-      padding: 3rem 1rem;
+    .features h3, .pricing h3 {
+      color: #00ff88;
+      margin-bottom: 20px;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
       max-width: 1000px;
       margin: auto;
     }
-    .pricing {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
+    .feature-card {
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+      position: relative;
     }
-    .plan {
-      border: 1px solid #00ff99;
+    .tooltip {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #333;
+      color: white;
+      padding: 5px;
       border-radius: 5px;
-      padding: 1rem;
-      text-align: center;
+      font-size: 0.8rem;
+      display: none;
     }
-    .plan h3 {
-      color: #00ff99;
+    .feature-card:hover .tooltip {
+      display: block;
     }
-    .plan p {
-      margin: 0.5rem 0;
+
+    /* Pricing */
+    .pricing-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
     }
+    .price-card {
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+      width: 250px;
+    }
+    .price-card h4 {
+      color: #00ff88;
+      margin-bottom: 10px;
+    }
+    .price-card p {
+      color: #ccc;
+      margin: 5px 0;
+    }
+
+    /* Footer */
     footer {
       text-align: center;
-      padding: 2rem;
-      background-color: #000;
-      border-top: 1px solid #00ff99;
-      margin-top: 3rem;
+      padding: 20px;
+      background-color: #111;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .hamburger { display: flex; }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <div class="logo">OpsByteAI</div>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-    <nav id="menu">
-      <a href="#signup">Sign Up</a>
-      <a href="#login">Log In</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#demo">Demo</a>
-      <a href="#faq">FAQ</a>
+    <h1>OpsByteAi</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Features</a>
+      <a href="#">Pricing</a>
+      <a href="#">Sign Up</a>
+      <a href="#">Login</a>
     </nav>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#">Home</a>
+      <a href="#">Features</a>
+      <a href="#">Pricing</a>
+      <a href="#">Sign Up</a>
+      <a href="#">Login</a>
+    </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <h1>Welcome to OpsByteAI</h1>
-      <p>Connect your apps, schedule tasks, and let AI do the work for you.</p>
-      <div class="buttons">
-        <a href="#pricing"><button class="btn">Get Started</button></a>
-        <a href="#demo"><button class="btn">Demo</button></a>
+  <section class="hero fade-in">
+    <h2>Next-Gen Automation & AI Assistant</h2>
+    <p>Connect your apps, schedule tasks, and let OpsByteAi handle everything — from posting videos to managing emails — all via chat.</p>
+    <div class="buttons">
+      <button onclick="document.querySelector('.pricing').scrollIntoView({behavior:'smooth'})">Get Started</button>
+      <button onclick="alert('Demo coming soon!')">Demo</button>
+    </div>
+  </section>
+
+  <section class="features fade-in">
+    <h3>Powerful Features</h3>
+    <div class="feature-grid">
+      <div class="feature-card">
+        Connect Any App
+        <div class="tooltip">Easily integrate your favorite tools.</div>
       </div>
-    </section>
-
-    <section id="pricing">
-      <h2 style="text-align:center; color:#00ff99;">Pricing Plans</h2>
-      <div class="pricing">
-        <div class="plan">
-          <h3>Beginner</h3>
-          <p>5 connected apps</p>
-          <p>€8.99 / month</p>
-          <button class="btn">Choose Plan</button>
-        </div>
-        <div class="plan">
-          <h3>Advanced</h3>
-          <p>15 connected apps</p>
-          <p>€24.99 / month</p>
-          <button class="btn">Choose Plan</button>
-        </div>
-        <div class="plan">
-          <h3>Enterprise</h3>
-          <p>Unlimited apps</p>
-          <p>Custom pricing</p>
-          <button class="btn">Contact Sales</button>
-        </div>
+      <div class="feature-card">
+        Smart Scheduling
+        <div class="tooltip">Automate tasks by minute, hour, or day.</div>
       </div>
-    </section>
+      <div class="feature-card">
+        Multilingual Support
+        <div class="tooltip">Speaks the language of your phone.</div>
+      </div>
+      <div class="feature-card">
+        AI-Powered Ideas
+        <div class="tooltip">Bot generates its own creative solutions.</div>
+      </div>
+    </div>
+  </section>
 
-    <section id="demo">
-      <h2 style="text-align:center; color:#00ff99;">Demo</h2>
-      <p style="text-align:center;">Demo coming soon! Here you'll be able to try a limited version of OpsByteAI.</p>
-    </section>
-
-    <section id="faq">
-      <h2 style="text-align:center; color:#00ff99;">FAQ</h2>
-      <p><strong>Q:</strong> How do I start?<br><strong>A:</strong> Sign up, choose a plan, and start connecting apps.</p>
-      <p><strong>Q:</strong> Can I cancel anytime?<br><strong>A:</strong> Yes, you can cancel your subscription at any time.</p>
-    </section>
-
-    <section id="signup">
-      <h2 style="text-align:center; color:#00ff99;">Sign Up</h2>
-      <p style="text-align:center;">Sign up page coming soon!</p>
-    </section>
-
-    <section id="login">
-      <h2 style="text-align:center; color:#00ff99;">Log In</h2>
-      <p style="text-align:center;">Log in page coming soon!</p>
-    </section>
-  </main>
+  <section class="pricing fade-in">
+    <h3>Choose Your Plan</h3>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h4>Beginner - €8.99/mo</h4>
+        <p>5 connected apps</p>
+        <p>Basic automation</p>
+      </div>
+      <div class="price-card">
+        <h4>Advanced - €24.99/mo</h4>
+        <p>15 connected apps</p>
+        <p>Advanced scheduling</p>
+      </div>
+      <div class="price-card">
+        <h4>Enterprise - Contact Us</h4>
+        <p>Custom integrations</p>
+        <p>Priority support</p>
+      </div>
+    </div>
+  </section>
 
   <footer>
-    <p>&copy; 2025 OpsByteAI. All rights reserved.</p>
+    © 2025 OpsByteAi — All Rights Reserved
   </footer>
 
   <script>
     function toggleMenu() {
-      const menu = document.getElementById('menu');
+      const menu = document.getElementById('mobileMenu');
       menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
     }
   </script>
+
 </body>
 </html>
