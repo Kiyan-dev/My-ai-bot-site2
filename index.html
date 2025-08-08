@@ -10,6 +10,20 @@
       font-family: Arial, sans-serif;
       background-color: #0d0d0d;
       color: white;
+      overflow-x: hidden;
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s forwards;
+    }
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Header */
@@ -19,22 +33,60 @@
       align-items: center;
       padding: 15px 30px;
       background-color: #111;
-      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     header h1 {
       color: #00ff88;
       font-size: 1.8rem;
       margin: 0;
     }
+
+    /* Navigation */
     nav {
       display: flex;
       gap: 15px;
-      flex-wrap: wrap;
     }
     nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
+    }
+
+    /* Hamburger menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background-color: #111;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 200px;
+      padding: 10px;
+      animation: slideDown 0.3s ease;
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-10px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .mobile-menu a {
+      color: white;
+      padding: 10px 0;
+      border-bottom: 1px solid #222;
+      text-decoration: none;
     }
 
     /* Hero */
@@ -130,23 +182,10 @@
       color: #666;
     }
 
-    /* Responsive adjustments */
+    /* Mobile adjustments */
     @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      nav {
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 10px;
-      }
-      .hero h2 {
-        font-size: 1.5rem;
-      }
-      .hero p {
-        font-size: 0.9rem;
-      }
+      nav { display: none; }
+      .hamburger { display: flex; }
     }
   </style>
 </head>
@@ -160,15 +199,26 @@
       <a href="#">Pricing</a>
       <a href="#">Login</a>
     </nav>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#">Home</a>
+      <a href="#">Features</a>
+      <a href="#">Pricing</a>
+      <a href="#">Login</a>
+    </div>
   </header>
 
-  <section class="hero">
+  <section class="hero fade-in">
     <h2>Next-Gen Automation & AI Assistant</h2>
     <p>Connect your apps, schedule tasks, and let OpsByteAi handle everything — from posting videos to managing emails — all via chat.</p>
     <button onclick="alert('Login feature coming soon!')">Get Started</button>
   </section>
 
-  <section class="features">
+  <section class="features fade-in">
     <h3>Powerful Features</h3>
     <div class="feature-grid">
       <div class="feature-card">
@@ -190,7 +240,7 @@
     </div>
   </section>
 
-  <section class="pricing">
+  <section class="pricing fade-in">
     <h3>Choose Your Plan</h3>
     <div class="pricing-grid">
       <div class="price-card">
@@ -214,6 +264,13 @@
   <footer>
     © 2025 OpsByteAi — All Rights Reserved
   </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
+  </script>
 
 </body>
 </html>
