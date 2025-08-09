@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>Login - OpsByteAi</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>OpsByteAi</h1>
-  </header>
-
-  <section class="auth-section fade-in">
-    <h2>Login</h2>
-    <form id="loginForm">
-      <input type="email" id="email" placeholder="Email" required>
-      <input type="password" id="password" placeholder="Password" required>
-      <button type="submit">Login</button>
-    </form>
-    <p>Don't have an account? <a href="signup.html">Sign up here</a>.</p>
-  </section>
-
-  <script>
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      // In a real site, you'd verify credentials with a server here
-      localStorage.setItem('loggedIn', 'true');
-      window.location.href = 'index.html';
-    });
-  </script>
+<main class="auth-container">
+  <h2>Login</h2>
+  <form onsubmit="loginUser(event)">
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button type="submit">Login</button>
+  </form>
+  <button onclick="googleLogin()">Sign in with Google</button>
+</main>
+<script>
+function loginUser(e) {
+  e.preventDefault();
+  localStorage.setItem("loggedIn", true);
+  alert("Login successful!");
+  window.location.href = "index.html";
+}
+function googleLogin() {
+  localStorage.setItem("loggedIn", true);
+  alert("Google Login successful!");
+  window.location.href = "index.html";
+}
+</script>
 </body>
 </html>
