@@ -1,104 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>OpsByteAi</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body { background-color: black; color: #00ff88; font-family: Arial, sans-serif; }
+    header, footer { display: flex; justify-content: space-between; padding: 15px; }
+    nav a { color: #00ff88; margin: 0 10px; text-decoration: none; }
+    .hero { text-align: center; padding: 60px 20px; }
+    .btn { padding: 10px 20px; border: 1px solid #00ff88; background: none; color: #00ff88; cursor: pointer; margin: 5px; }
+    .features { max-width: 800px; margin: auto; }
+    .feature { border: 1px solid #00ff88; padding: 10px; margin: 10px 0; cursor: pointer; }
+    .feature p { display: none; }
+    footer { flex-direction: column; align-items: center; margin-top: 50px; }
+    footer a { color: #00ff88; margin: 5px; }
+  </style>
 </head>
 <body>
 
-  <header>
-    <h1>OpsByteAi</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="features.html">Features</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="login.html">Login</a>
-      <a href="signup.html">Sign Up</a>
-      <a href="#" onclick="logout()">Logout</a>
-    </nav>
-    <div class="hamburger" onclick="toggleMenu()">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="index.html">Home</a>
-      <a href="features.html">Features</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="login.html">Login</a>
-      <a href="signup.html">Sign Up</a>
-      <a href="#" onclick="logout()">Logout</a>
-    </div>
-  </header>
+<header>
+  <h1>OpsByteAi</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="features.html">Features</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="faq.html">FAQ</a>
+    <a href="about.html">About Us</a>
+    <a href="login.html">Login</a>
+    <a href="signup.html">Sign Up</a>
+  </nav>
+</header>
 
-  <section class="hero fade-in">
-    <h2>Next-Gen Automation & AI Assistant</h2>
-    <p>Connect your apps, schedule tasks, and let OpsByteAi handle everything — from posting videos to managing emails — all via chat.</p>
-    <button onclick="window.location.href='pricing.html'">Get Started</button>
-    <button onclick="demoAccess()">Demo</button>
-  </section>
+<section class="hero">
+  <h2>Automate Your World with AI</h2>
+  <button class="btn" onclick="window.location.href='pricing.html'">Get Started</button>
+  <button class="btn" onclick="startDemo()">Demo</button>
+</section>
 
-  <section class="features fade-in">
-    <h3>Powerful Features</h3>
-    <div class="feature-grid">
-      <div class="feature-card" onclick="toggleFeature(this)">
-        Connect Any App
-        <div class="tooltip">Easily integrate your favorite tools.</div>
-        <p class="feature-text">Integrate apps like Gmail, Slack, YouTube, and more with just a click.</p>
-      </div>
-      <div class="feature-card" onclick="toggleFeature(this)">
-        Smart Scheduling
-        <div class="tooltip">Automate tasks by minute, hour, or day.</div>
-        <p class="feature-text">Plan social posts, send emails, or launch tasks exactly when you want.</p>
-      </div>
-      <div class="feature-card" onclick="toggleFeature(this)">
-        Multilingual Support
-        <div class="tooltip">Speaks the language of your phone.</div>
-        <p class="feature-text">Supports over 50 languages for truly global automation.</p>
-      </div>
-      <div class="feature-card" onclick="toggleFeature(this)">
-        AI-Powered Ideas
-        <div class="tooltip">Bot generates its own creative solutions.</div>
-        <p class="feature-text">Let the AI brainstorm, create, and automate without you lifting a finger.</p>
-      </div>
-    </div>
-  </section>
+<section class="features">
+  <h2>Powerful Features</h2>
+  <div class="feature" onclick="toggleFeature(this)">
+    <h3>Connect Any App</h3>
+    <p>Integrate Gmail, Slack, YouTube, and 1,000+ other apps seamlessly.</p>
+  </div>
+  <div class="feature" onclick="toggleFeature(this)">
+    <h3>Smart Scheduling</h3>
+    <p>Automate tasks by the minute, hour, or day — no manual work needed.</p>
+  </div>
+  <div class="feature" onclick="toggleFeature(this)">
+    <h3>AI-Powered Ideas</h3>
+    <p>Let AI suggest workflows and optimizations for your business.</p>
+  </div>
+</section>
 
-  <footer>
+<footer>
+  <div>
     <a href="about.html">About Us</a> |
     <a href="faq.html">FAQ</a> |
-    <a href="contact.html">Contact</a>
-    <p>© 2025 OpsByteAi — All Rights Reserved</p>
-  </footer>
+    <a href="features.html">Features</a> |
+    <a href="pricing.html">Pricing</a> |
+    <a href="login.html">Login</a> |
+    <a href="signup.html">Sign Up</a>
+  </div>
+  <p>&copy; 2025 OpsByteAi. All rights reserved.</p>
+</footer>
 
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('mobileMenu');
-      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-    }
+<script>
+function toggleFeature(el) {
+  const p = el.querySelector("p");
+  p.style.display = p.style.display === "block" ? "none" : "block";
+}
 
-    function toggleFeature(card) {
-      const text = card.querySelector('.feature-text');
-      text.style.display = text.style.display === 'block' ? 'none' : 'block';
-    }
-
-    function demoAccess() {
-      if (localStorage.getItem("loggedIn") === "true") {
-        window.location.href = "demo.html";
-      } else {
-        alert("You need to sign up before accessing the demo.");
-        window.location.href = "signup.html";
-      }
-    }
-
-    function logout() {
-      localStorage.removeItem("loggedIn");
-      alert("You have been logged out.");
-      window.location.href = "index.html";
-    }
-  </script>
+function startDemo() {
+  if (!localStorage.getItem("loggedIn")) {
+    alert("Please log in or sign up to access the demo.");
+    window.location.href = "login.html";
+  } else {
+    alert("Demo started!");
+    window.location.href = "bot.html"; // Replace with actual demo page
+  }
+}
+</script>
 
 </body>
 </html>
