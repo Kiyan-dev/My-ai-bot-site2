@@ -1,32 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
   <title>Login - OpsByteAi</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script>
+    function loginUser() {
+      localStorage.setItem('loggedIn', 'true');
+      alert('Logged in successfully!');
+      window.location.href = 'index.html';
+    }
+
+    function handleGoogleResponse(response) {
+      const data = jwt_decode(response.credential);
+      localStorage.setItem('loggedIn', 'true');
+      localStorage.setItem('userName', data.name);
+      alert(`Welcome, ${data.name}!`);
+      window.location.href = 'index.html';
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
 </head>
 <body>
-<main class="auth-container">
-  <h2>Login</h2>
-  <form onsubmit="loginUser(event)">
-    <input type="email" id="email" placeholder="Email" required>
-    <input type="password" id="password" placeholder="Password" required>
-    <button type="submit">Login</button>
-  </form>
-  <button onclick="googleLogin()">Sign in with Google</button>
-</main>
-<script>
-function loginUser(e) {
-  e.preventDefault();
-  localStorage.setItem("loggedIn", true);
-  alert("Login successful!");
-  window.location.href = "index.html";
-}
-function googleLogin() {
-  localStorage.setItem("loggedIn", true);
-  alert("Google Login successful!");
-  window.location.href = "index.html";
-}
-</script>
+  <header>
+    <h1>OpsByteAi</h1>
+  </header>
+  <section class="hero">
+    <h2>Login</h2>
+    <input type="text" placeholder="Email"><br><br>
+    <input type="password" placeholder="Password"><br><br>
+    <button onclick="loginUser()">Login</button>
+    <br><br>
+    <div id="g_id_onload"
+         data-client_id="<!DOCTYPE html>
+<html>
+<head>
+  <title>Login - OpsByteAi</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script>
+    function loginUser() {
+      localStorage.setItem('loggedIn', 'true');
+      alert('Logged in successfully!');
+      window.location.href = 'index.html';
+    }
+
+    function handleGoogleResponse(response) {
+      const data = jwt_decode(response.credential);
+      localStorage.setItem('loggedIn', 'true');
+      localStorage.setItem('userName', data.name);
+      alert(`Welcome, ${data.name}!`);
+      window.location.href = 'index.html';
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>OpsByteAi</h1>
+  </header>
+  <section class="hero">
+    <h2>Login</h2>
+    <input type="text" placeholder="Email"><br><br>
+    <input type="password" placeholder="Password"><br><br>
+    <button onclick="loginUser()">Login</button>
+    <br><br>
+    <div id="g_id_onload"
+         data-client_id="YOUR_GOOGLE_CLIENT_ID"
+         data-callback="handleGoogleResponse">
+    </div>
+    <div class="g_id_signin" data-type="standard"></div>
+  </section>
+</body>
+</html>"
+         data-callback="handleGoogleResponse">
+    </div>
+    <div class="g_id_signin" data-type="standard"></div>
+  </section>
 </body>
 </html>
