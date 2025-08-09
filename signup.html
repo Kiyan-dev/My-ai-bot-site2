@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>Sign Up - OpsByteAi</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>OpsByteAi</h1>
-  </header>
-
-  <section class="auth-section fade-in">
-    <h2>Create an Account</h2>
-    <form id="signupForm">
-      <input type="text" id="name" placeholder="Full Name" required>
-      <input type="email" id="email" placeholder="Email" required>
-      <input type="password" id="password" placeholder="Password" required>
-      <button type="submit">Sign Up</button>
-    </form>
-    <p>Already have an account? <a href="login.html">Login here</a>.</p>
-  </section>
-
-  <script>
-    document.getElementById('signupForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      // In a real site, you'd send user data to your server here
-      localStorage.setItem('loggedIn', 'true');
-      window.location.href = 'index.html';
-    });
-  </script>
+<main class="auth-container">
+  <h2>Create Account</h2>
+  <form onsubmit="signupUser(event)">
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button type="submit">Sign Up</button>
+  </form>
+  <button onclick="googleLogin()">Sign up with Google</button>
+</main>
+<script>
+function signupUser(e) {
+  e.preventDefault();
+  localStorage.setItem("loggedIn", true);
+  alert("Account created!");
+  window.location.href = "index.html";
+}
+function googleLogin() {
+  localStorage.setItem("loggedIn", true);
+  alert("Google Sign Up successful!");
+  window.location.href = "index.html";
+}
+</script>
 </body>
 </html>
