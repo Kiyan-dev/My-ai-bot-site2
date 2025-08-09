@@ -1,79 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
   <title>Pricing - OpsByteAi</title>
   <link rel="stylesheet" href="style.css">
+  <script>
+    function requireLogin(plan) {
+      if (localStorage.getItem('loggedIn') === 'true') {
+        alert(`You selected: ${plan}`);
+      } else {
+        alert('Please log in before purchasing a plan.');
+        window.location.href = 'login.html';
+      }
+    }
+  </script>
 </head>
 <body>
-<header>
-  <h1>OpsByteAi</h1>
-</header>
-<main class="page-content">
-  <h2>Choose Your Plan</h2>
-  <div class="pricing-grid">
-    <div class="plan">
-      <h3>Basic</h3>
-      <p>$9.99 / month</p>
-      <p>7-day free trial</p>
-      <ul>
-        <li>Up to 5 apps</li>
-        <li>1 AI agent</li>
-        <li>Up to 500 messages/month</li>
-        <li>Basic automation scripts</li>
-      </ul>
-      <button onclick="subscribe('basic', 1)">Subscribe</button>
-      <button onclick="window.location.href='pricing_3_basic.html'">3 Months (10% off)</button>
-      <button onclick="window.location.href='pricing_6_basic.html'">6 Months (15% off)</button>
-      <button onclick="window.location.href='pricing_12_basic.html'">12 Months (20% off)</button>
-    </div>
+  <header>
+    <h1>OpsByteAi</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">About Us</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Sign Up</a>
+    </nav>
+  </header>
 
-    <div class="plan">
-      <h3>Advanced</h3>
-      <p>$24.99 / month</p>
-      <p>7-day free trial</p>
-      <ul>
-        <li>Up to 20 apps</li>
-        <li>5 AI agents</li>
-        <li>Unlimited messages</li>
-        <li>Advanced automation scripts</li>
-      </ul>
-      <button onclick="subscribe('advanced', 1)">Subscribe</button>
-      <button onclick="window.location.href='pricing_3_advanced.html'">3 Months (10% off)</button>
-      <button onclick="window.location.href='pricing_6_advanced.html'">6 Months (15% off)</button>
-      <button onclick="window.location.href='pricing_12_advanced.html'">12 Months (20% off)</button>
-    </div>
+  <section class="hero">
+    <h2>Choose Your Plan</h2>
+  </section>
 
-    <div class="plan">
-      <h3>Pro</h3>
-      <p>$54.99 / month</p>
-      <p>14-day free trial</p>
-      <ul>
-        <li>Unlimited apps</li>
-        <li>Unlimited AI agents</li>
-        <li>Unlimited messages</li>
-        <li>Premium automation scripts</li>
-        <li>Dedicated account manager</li>
-      </ul>
-      <button onclick="subscribe('pro', 1)">Subscribe</button>
-      <button onclick="window.location.href='pricing_3_pro.html'">3 Months (10% off)</button>
-      <button onclick="window.location.href='pricing_6_pro.html'">6 Months (15% off)</button>
-      <button onclick="window.location.href='pricing_12_pro.html'">12 Months (20% off)</button>
+  <section class="features">
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3>Basic - €8.99/mo</h3>
+        <p>5 Apps | 1 Messenger | 50 Messages/day | 1 AI Agent | 7-day free trial</p>
+        <button onclick="requireLogin('Basic 1 Month')">1 Month</button>
+        <button onclick="requireLogin('Basic 3 Month - 5% Off')">3 Months</button>
+        <button onclick="requireLogin('Basic 6 Month - 10% Off')">6 Months</button>
+        <button onclick="requireLogin('Basic 1 Year - 20% Off')">1 Year</button>
+      </div>
+      <div class="feature-card">
+        <h3>Advanced - €24.99/mo</h3>
+        <p>15 Apps | 3 Messengers | 200 Messages/day | 3 AI Agents | 7-day free trial</p>
+        <button onclick="requireLogin('Advanced 1 Month')">1 Month</button>
+        <button onclick="requireLogin('Advanced 3 Month - 5% Off')">3 Months</button>
+        <button onclick="requireLogin('Advanced 6 Month - 10% Off')">6 Months</button>
+        <button onclick="requireLogin('Advanced 1 Year - 20% Off')">1 Year</button>
+      </div>
+      <div class="feature-card">
+        <h3>Pro - €54.99/mo</h3>
+        <p>Unlimited Apps | Unlimited Messengers | Unlimited Messages | 10 AI Agents | 14-day free trial</p>
+        <button onclick="requireLogin('Pro 1 Month')">1 Month</button>
+        <button onclick="requireLogin('Pro 3 Month - 5% Off')">3 Months</button>
+        <button onclick="requireLogin('Pro 6 Month - 10% Off')">6 Months</button>
+        <button onclick="requireLogin('Pro 1 Year - 20% Off')">1 Year</button>
+      </div>
     </div>
-  </div>
-</main>
-<script>
-function subscribe(plan, months) {
-  if (!localStorage.getItem("loggedIn")) {
-    alert("Please log in or sign up first.");
-    window.location.href = "login.html";
-    return;
-  }
-  localStorage.setItem("activePlan", plan);
-  localStorage.setItem("planMonths", months);
-  alert("Subscription started: " + plan);
-  window.location.href = "bot.html";
-}
-</script>
+  </section>
 </body>
 </html>
